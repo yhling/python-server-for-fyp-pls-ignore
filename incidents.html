@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Incidents</title>
+    <meta name="author" content="heng">
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap-table.css">
+	<link href="assets/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap-table.js"></script>
+    <script src="assets/bootstrap.min.js"></script>
+    <link href="assets/starter-template.css" rel="stylesheet">
+    <script>
+    function todate(value){
+		var d = new Date(value * 1000);
+		return d
+	}
+	
+	var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+	jQuery.fn.bootstrapTable.defaults.searchText = qs['s']
+    </script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">WCS NAV</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Node List</a></li>
+            <li class="active"><a href="incidents.html">Incidents</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <div class="starter-template">
+		  <h2>Incidents</h2>
+		  <table id="table" data-toggle="table" data-url="/incident_list" data-show-refresh="true" data-show-toggle="true" data-search="true" data-pagination="true" data-side-pagination="server" data-cache="false" data-sort-name="ct" data-sort-order="desc">
+    <thead>
+        <tr>
+			<th data-field="thumb" data-align="center"></th>
+            <th data-field="hn" data-align="left" data-sortable="true">Hostname</th>
+            <th data-field="rt" data-align="center" data-sortable="true" data-formatter="todate">Received time</th>
+            <th data-field="ct" data-align="center" data-sortable="true" data-formatter="todate">Captured time</th>
+        </tr>
+    </thead>
+</table>
+        
+      </div>
+
+    </div>
+    <script>
+    $('#table').on('click-row.bs.table', function (e, arg1, $arg2) {
+		console.log(arg1);
+    window.location.href = /href='(\S*)'>/g.exec(arg1.hn)[1];
+});
+    </script>
+</body>
+</html>
+
