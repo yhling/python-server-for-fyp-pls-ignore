@@ -7,24 +7,24 @@ git pull
 
 Dependencies
 -------
-0. FFMPEG (static builds available at [https://johnvansickle.com/ffmpeg/])
-0. OpenCV for Python
+*  FFMPEG (static builds available at [https://johnvansickle.com/ffmpeg/])
+*  OpenCV for Python
 ```bash
 sudo apt-get install install build-essential pip cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev python-opencv
 pip install imutils
 ```
-0. Autobahn for Python
+*  Autobahn for Python
 ```bash
 pip install autobahn
 ```
-0. Nginx
+*  Nginx
 ```bash
 apt-get install nginx -y
 ```
 
 Setting up nginx
 -----------
-0. Copy Nginx config to ```/usr/local/nginx/conf/nginx.conf``` Replace path to motion_rec_v1.py according to your setup
+*  Copy Nginx config to ```/usr/local/nginx/conf/nginx.conf``` Replace path to motion_rec_v1.py according to your setup
 ```
 #user  nobody;
 worker_processes  auto;
@@ -121,7 +121,7 @@ http {
     }
 }
 ```
-0. Restart nginx
+*  Restart nginx
 ```bash
 service nginx restart
 ```
